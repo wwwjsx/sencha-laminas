@@ -1,0 +1,34 @@
+<?php
+/**
+ * @var Laminas\View\Renderer\PhpRenderer $this
+ */
+?>
+
+<base href="<?=$this->front_build_path?>">
+
+<script type="text/javascript">
+    var Ext = Ext || {}; // Ext namespace won't be defined yet...
+
+    // This function is called by the Microloader after it has performed basic
+    // device detection. The results are provided in the "tags" object. You can
+    // use these tags here or even add custom tags. These can be used by platform
+    // filters in your manifest or by platformConfig expressions in your app.
+    //
+    Ext.beforeLoad = function (tags) {
+        Ext.manifest = "<?=$this->production ? 'app.json' : 'bootstrap.json'?>";
+
+        // This function is called once the manifest is available but before
+        // any data is pulled from it.
+        //
+        return function (manifest) {
+            // peek at / modify the manifest object
+            // console.log(manifest);
+        };
+    };
+</script>
+
+<?php if ($this->production): ?>
+    <script id="microloader" type="text/javascript" src="microloader.js"></script>
+<?php else: ?>
+    <script id="microloader" type="text/javascript" src="bootstrap.js"></script>
+<?php endif ?>
