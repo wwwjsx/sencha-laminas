@@ -11,6 +11,5 @@ return [
         'module_map_cache_enabled' => false,
     ],
 
-    'production' => false,
-    'front_build_path' => '/sencha/',
+    'production' => false
 ];

@@ -4,7 +4,11 @@
  */
 ?>
 
-<base href="<?=$this->front_build_path?>">
+<?php if ($this->production): ?>
+    <base href="/build/">
+<?php else: ?>
+    <base href="/sencha/">
+<?php endif ?>
 
 <script type="text/javascript">
     var Ext = Ext || {}; // Ext namespace won't be defined yet...
@@ -15,7 +19,7 @@
     // filters in your manifest or by platformConfig expressions in your app.
     //
     Ext.beforeLoad = function (tags) {
-        Ext.manifest = "<?=$this->production ? 'app.json' : 'bootstrap.json'?>";
+        Ext.manifest = "<?=$this->production ? 'production/App/app.json' : 'bootstrap.json'?>";
 
         // This function is called once the manifest is available but before
         // any data is pulled from it.
@@ -28,7 +32,7 @@
 </script>
 
 <?php if ($this->production): ?>
-    <script id="microloader" type="text/javascript" src="microloader.js"></script>
+    <script id="microloader" type="text/javascript" src="production/App/microloader.js"></script>
 <?php else: ?>
     <script id="microloader" type="text/javascript" src="bootstrap.js"></script>
 <?php endif ?>

@@ -63,6 +63,5 @@ return [
     // Should be compatible with Laminas\ServiceManager\Config.
     // 'service_manager' => [],
 
-    'production' => true,
-    'front_build_path' => '/build/production/App/',
+    'production' => true
 ];

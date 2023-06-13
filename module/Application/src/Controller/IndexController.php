@@ -32,7 +32,6 @@ class IndexController extends AbstractActionController
         $viewModel = new ViewModel();
 
         $viewModel->setVariable('production', $appConfig['production']);
-        $viewModel->setVariable('front_build_path', $appConfig['front_build_path']);
 
         return $viewModel;
     }
